@@ -85,24 +85,28 @@ class Pagination extends Component {
   }
 
   render() {
-    const { currentPage } = this.props;
+    const { currentPage, totalEntries, perPage } = this.props;
     if (!currentPage) return null;
 
     return (
       <nav className="mt-5 d-flex align-items-center justify-content-center">
         {this.renderPerPage()}
         <ul className="pagination flex-1 mb-0">
-          <li className="page-item">
-            <a onClick={this.onPrev} className="page-link" href="#">
-              Previous
-            </a>
-          </li>
+          {currentPage !== 1 && (
+            <li className="page-item">
+              <a onClick={this.onPrev} className="page-link" href="#">
+                Previous
+              </a>
+            </li>
+          )}
           {this.state.links}
-          <li className="page-item">
-            <a onClick={this.onNext} className="page-link" href="#">
-              Next
-            </a>
-          </li>
+          {currentPage * perPage < totalEntries && (
+            <li className="page-item">
+              <a onClick={this.onNext} className="page-link" href="#">
+                Next
+              </a>
+            </li>
+          )}
         </ul>
       </nav>
     );
