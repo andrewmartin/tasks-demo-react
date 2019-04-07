@@ -6,7 +6,7 @@
 
 This is a basic demo application to showcase the frontend development abilities of Andrew Martin. It was built using Create React App, and uses React, Redux, and several other small, popular libraries to manage application state. It also leverages `reactstrap` to simplify some of the UI components.
 
-[Screengrab](<[https://link](http://cloud.believelabs.com/cbac91e56848)>)
+[Screen Recording](http://cloud.believelabs.com/cbac91e56848)
 
 ## Quickstart
 
