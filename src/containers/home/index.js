@@ -5,6 +5,7 @@ import { Container, Row, Col } from 'reactstrap';
 
 import { actions as taskActions } from 'reducers/task';
 import TasksTable from 'components/TasksTable';
+import TasksFilter from 'components/TasksFilter';
 import Pagination from 'components/Pagination';
 
 class Home extends Component {
@@ -48,7 +49,9 @@ class Home extends Component {
 
   render() {
     const {
-      task: { items, isLoading, total_entries }
+      actions,
+      actions: { filterTask },
+      task: { filters, items, isLoading, total_entries }
     } = this.props;
 
     const { page, per_page } = this.state;
@@ -57,8 +60,37 @@ class Home extends Component {
       <Container className="mt-5">
         <Row>
           <Col>
-            <h2>Tasks</h2>
-            <TasksTable items={items} />
+            <Row>
+              <Col sm={4}>
+                <h5 className="mb-3">Filter Displayed Items</h5>
+                <TasksFilter
+                  onFilter={filterTask}
+                  name="Role"
+                  items={items}
+                  category="role"
+                  filters={filters}
+                />
+                <TasksFilter
+                  onFilter={filterTask}
+                  name="Location"
+                  items={items}
+                  category="location"
+                  filters={filters}
+                />
+                <TasksFilter
+                  onFilter={filterTask}
+                  name="Task"
+                  items={items}
+                  category="name"
+                  filters={filters}
+                />
+              </Col>
+              <Col sm={8}>
+                <h2>Tasks</h2>
+                <TasksTable actions={actions} filters={filters} items={items} />
+              </Col>
+            </Row>
+
             <Pagination
               isLoading={isLoading}
               onSelectPage={({ page }) =>
@@ -68,7 +100,8 @@ class Home extends Component {
               }
               onPerPage={({ per_page }) =>
                 this.setState({
-                  per_page
+                  per_page,
+                  page: 1
                 })
               }
               perPage={per_page}

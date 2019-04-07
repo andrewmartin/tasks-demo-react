@@ -69,12 +69,13 @@ class Pagination extends Component {
         </label>
         <select
           onChange={e => onPerPage({ per_page: e.target.value })}
+          defaultValue={perPage}
           className="form-control mr-2"
-          style={{ width: 150 }}
+          style={{ width: 100 }}
           name="per_page"
           id="per_page">
           {[5, 10, 15, 20, 25].map(amount => (
-            <option selected={amount === perPage} key={amount} value={amount}>
+            <option key={amount} value={amount}>
               {amount}
             </option>
           ))}
@@ -88,7 +89,7 @@ class Pagination extends Component {
     if (!currentPage) return null;
 
     return (
-      <nav className="mt-5 d-flex align-items-center">
+      <nav className="mt-5 d-flex align-items-center justify-content-center">
         {this.renderPerPage()}
         <ul className="pagination flex-1 mb-0">
           <li className="page-item">

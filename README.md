@@ -12,3 +12,7 @@ This is a basic demo application to showcase the frontend development abilities 
 
 - Dynamic pagination generated based on API response
 - Configureable "per page" pagination
+
+## Roadmap
+
+- Add tests
