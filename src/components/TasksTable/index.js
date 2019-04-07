@@ -17,8 +17,8 @@ const Cell = ({ item, filters, className }) => {
 const Row = ({ id, name, role, location, filters, user, onComplete }) => {
   return (
     <tr key={id}>
-      <Cell item={name} filters={filters.name} className="bg-primary" />
       <td>{user}</td>
+      <Cell item={name} filters={filters.name} className="bg-primary" />
       <Cell item={role} filters={filters.role} className="bg-danger" />
       <Cell item={location} filters={filters.location} className="bg-success" />
 
@@ -47,8 +47,8 @@ export default class TasksTable extends Component {
       <Table>
         <thead>
           <tr>
-            <th scope="col">Task Name</th>
             <th scope="col">User</th>
+            <th scope="col">Task Name</th>
             <th scope="col">Role</th>
             <th scope="col">Location</th>
             <th scope="col">Actions</th>
