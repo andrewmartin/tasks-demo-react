@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 
 class Pagination extends Component {
   state = {
-    links: []
+    links: [],
   };
 
   onNext = e => {
@@ -31,7 +31,7 @@ class Pagination extends Component {
     if (isLoading !== prevProps.isLoading) {
       const links = this.generateLinks(Math.ceil(totalEntries / perPage));
       this.setState({
-        links
+        links,
       });
     }
   };
@@ -43,13 +43,10 @@ class Pagination extends Component {
       links.push(
         <li
           className={cx('page-item', {
-            active: page === currentPage
+            active: page === currentPage,
           })}
           key={page}>
-          <a
-            className="page-link"
-            onClick={this.onGoTo.bind(this, page)}
-            href="#">
+          <a className="page-link" onClick={this.onGoTo.bind(this, page)} rel="presentation">
             {page}
           </a>
         </li>
@@ -94,7 +91,7 @@ class Pagination extends Component {
         <ul className="pagination flex-1 mb-0">
           {currentPage !== 1 && (
             <li className="page-item">
-              <a onClick={this.onPrev} className="page-link" href="#">
+              <a onClick={this.onPrev} className="page-link" rel="presentation">
                 Previous
               </a>
             </li>
@@ -102,7 +99,7 @@ class Pagination extends Component {
           {this.state.links}
           {currentPage * perPage < totalEntries && (
             <li className="page-item">
-              <a onClick={this.onNext} className="page-link" href="#">
+              <a onClick={this.onNext} className="page-link" rel="presentation">
                 Next
               </a>
             </li>

@@ -8,6 +8,12 @@
     "precommit": "pretty-quick --staged"
   },
   "devDependencies": {
+    "babel-eslint": "9.0.0",
+    "eslint": "5.12.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
     "prettier": "1.16.4",
     "react-scripts": "2.1.8"
   },
