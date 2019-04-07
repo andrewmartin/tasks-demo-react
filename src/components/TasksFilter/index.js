@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from 'reactstrap';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 export default class TasksFilter extends Component {
   state = {
-    isOpen: false
+    isOpen: false,
   };
 
   toggle = () => {
     this.setState(prevState => ({
-      isOpen: !prevState.isOpen
+      isOpen: !prevState.isOpen,
     }));
   };
 
@@ -21,7 +16,7 @@ export default class TasksFilter extends Component {
     const { onFilter, category } = this.props;
     onFilter({
       category,
-      value
+      value,
     });
   };
 
@@ -32,10 +27,7 @@ export default class TasksFilter extends Component {
     items.map(item => set.add(item[category]));
 
     return (
-      <Dropdown
-        className="mb-2"
-        isOpen={this.state.isOpen}
-        toggle={this.toggle}>
+      <Dropdown className="mb-2" isOpen={this.state.isOpen} toggle={this.toggle}>
         <DropdownToggle caret>{name}</DropdownToggle>
         <DropdownMenu>
           {[...set].map(item => (

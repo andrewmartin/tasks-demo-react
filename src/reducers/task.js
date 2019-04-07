@@ -17,13 +17,15 @@ export const actions = {
       console.log('error', error);
       return dispatch(
         taskError({
-          error
+          error,
         })
       );
     }
   },
   filterTask: ({ category, value }) => (dispatch, state) => {
-    const filters = state().task.filters;
+    const {
+      task: { filters },
+    } = state();
 
     if (filters[category].includes(value)) {
       return dispatch(unFilterTask({ category, value }));
@@ -34,23 +36,23 @@ export const actions = {
   completeTask: id => async (dispatch, _state, { instance: api }) => {
     dispatch(fetchTaskStart());
     const payload = {
-      completed: true
+      completed: true,
     };
 
     try {
       const data = await api.put(`/tasks/${id}`, {
-        task: payload
+        task: payload,
       });
       dispatch(completeTask(data));
     } catch (error) {
       console.log('error', error);
       return dispatch(
         taskError({
-          error
+          error,
         })
       );
     }
-  }
+  },
 };
 
 const defaultState = {
@@ -60,8 +62,8 @@ const defaultState = {
   filters: {
     role: [],
     location: [],
-    name: []
-  }
+    name: [],
+  },
 };
 
 export default handleActions(
@@ -71,9 +73,9 @@ export default handleActions(
         return {
           ...state,
           isLoading: true,
-          serverError: null
+          serverError: null,
         };
-      }
+      },
     },
     [getTasks]: {
       next: (state, { payload: { data } }) => {
@@ -81,9 +83,9 @@ export default handleActions(
           ...state,
           isLoading: false,
           serverError: null,
-          ...data
+          ...data,
         };
-      }
+      },
     },
     [filterTask]: {
       next: (state, { payload: { category, value } }) => {
@@ -91,10 +93,10 @@ export default handleActions(
           ...state,
           filters: {
             ...state.filters,
-            [category]: state.filters[category].concat(value)
-          }
+            [category]: state.filters[category].concat(value),
+          },
         };
-      }
+      },
     },
     [unFilterTask]: {
       next: (state, { payload: { category, value } }) => {
@@ -102,26 +104,26 @@ export default handleActions(
           ...state,
           filters: {
             ...state.filters,
-            [category]: state.filters[category].filter(item => item !== value)
-          }
+            [category]: state.filters[category].filter(item => item !== value),
+          },
         };
-      }
+      },
     },
     [completeTask]: {
       next: (
         state,
         {
           payload: {
-            data: { id }
-          }
+            data: { id },
+          },
         }
       ) => {
         return {
           ...state,
-          items: state.items.filter(item => item.id !== id)
+          items: state.items.filter(item => item.id !== id),
         };
-      }
-    }
+      },
+    },
   },
 
   defaultState

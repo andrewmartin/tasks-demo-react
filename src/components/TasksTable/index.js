@@ -7,7 +7,7 @@ const Cell = ({ item, filters, className }) => {
     <td
       className={cx({
         [className]: filters.includes(item),
-        'text-white': filters.includes(item)
+        'text-white': filters.includes(item),
       })}>
       {item}
     </td>
@@ -34,7 +34,7 @@ const Row = ({ id, name, role, location, filters, user, onComplete }) => {
 export default class TasksTable extends Component {
   onComplete = id => {
     const {
-      actions: { completeTask }
+      actions: { completeTask },
     } = this.props;
 
     completeTask(id);

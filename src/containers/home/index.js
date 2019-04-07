@@ -11,7 +11,7 @@ import Pagination from 'components/Pagination';
 class Home extends Component {
   state = {
     page: 1,
-    per_page: 10
+    per_page: 10,
   };
 
   componentDidMount() {
@@ -19,7 +19,7 @@ class Home extends Component {
 
     this.fetchData({
       page,
-      per_page
+      per_page,
     });
   }
 
@@ -29,21 +29,21 @@ class Home extends Component {
     if (prevState.page !== page || prevState.per_page !== per_page) {
       this.fetchData({
         page,
-        per_page
+        per_page,
       });
     }
   }
 
   fetchData = ({ page }) => {
     const {
-      actions: { getTasks }
+      actions: { getTasks },
     } = this.props;
 
     const { per_page } = this.state;
 
     getTasks({
       page,
-      per_page
+      per_page,
     });
   };
 
@@ -51,7 +51,7 @@ class Home extends Component {
     const {
       actions,
       actions: { filterTask },
-      task: { filters, items, isLoading, total_entries }
+      task: { filters, items, isLoading, total_entries },
     } = this.props;
 
     const { page, per_page } = this.state;
@@ -95,13 +95,13 @@ class Home extends Component {
               isLoading={isLoading}
               onSelectPage={({ page }) =>
                 this.setState({
-                  page
+                  page,
                 })
               }
               onPerPage={({ per_page }) =>
                 this.setState({
                   per_page,
-                  page: 1
+                  page: 1,
                 })
               }
               perPage={per_page}
@@ -116,16 +116,16 @@ class Home extends Component {
 }
 
 const mapStateToProps = ({ task }) => ({
-  task
+  task,
 });
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(
     {
-      ...taskActions
+      ...taskActions,
     },
     dispatch
-  )
+  ),
 });
 
 export default connect(
