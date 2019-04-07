@@ -46,9 +46,12 @@ class Pagination extends Component {
             active: page === currentPage,
           })}
           key={page}>
-          <a className="page-link" onClick={this.onGoTo.bind(this, page)} rel="presentation">
+          <button
+            className="page-link"
+            onClick={this.onGoTo.bind(this, page)}
+            rel="presentation">
             {page}
-          </a>
+          </button>
         </li>
       );
     }
@@ -91,17 +94,17 @@ class Pagination extends Component {
         <ul className="pagination flex-1 mb-0">
           {currentPage !== 1 && (
             <li className="page-item">
-              <a onClick={this.onPrev} className="page-link" rel="presentation">
+              <button onClick={this.onPrev} className="page-link" rel="presentation">
                 Previous
-              </a>
+              </button>
             </li>
           )}
           {this.state.links}
           {currentPage * perPage < totalEntries && (
             <li className="page-item">
-              <a onClick={this.onNext} className="page-link" rel="presentation">
+              <button onClick={this.onNext} className="page-link" rel="presentation">
                 Next
-              </a>
+              </button>
             </li>
           )}
         </ul>
