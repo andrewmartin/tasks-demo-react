@@ -1,20 +1,14 @@
-<p align="center"><a href="https://medium.com/@notrab/getting-started-with-create-react-app-redux-react-router-redux-thunk-d6a19259f71f"><img src="https://i.imgur.com/PATsTx2.png" title="View tutorial" alt="React, React Router, Redux and Redux Thunk" width="900"></a></p>
+# Tasks Demo App
 
-* Tutorial: [Getting started with create-react-app, Redux, React Router & Redux Thunk](https://medium.com/@notrab/getting-started-with-create-react-app-redux-react-router-redux-thunk-d6a19259f71f)
-* [Demo](https://create-react-app-redux.now.sh) 🙌
+This is a basic demo application to showcase the frontend development abilities of Andrew Martin. It was built using Create React App, and uses React, Redux, and several other small, popular libraries to manage application state. It also leverages `reactstrap` to simplify some of the UI components.
 
-## Installation
+## Quickstart
 
-```bash
-git clone https://github.com/notrab/create-react-app-redux.git
-cd create-react-app-redux
-yarn
-```
+1. `yarn`
+2. `cp .env-example .env` (and configure to match the Rails server)
+3. `yarn start`
 
-## Get started
+## Bonus
 
-```bash
-yarn start
-```
-
-This boilerplate is built using [create-react-app](https://github.com/facebook/create-react-app) so you will want to read the User Guide for more goodies.
+- Dynamic pagination generated based on API response
+- Configureable "per page" pagination
