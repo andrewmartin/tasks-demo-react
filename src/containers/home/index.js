@@ -11,7 +11,7 @@ import Pagination from 'components/Pagination';
 class Home extends Component {
   state = {
     page: 1,
-    per_page: 5
+    per_page: 10
   };
 
   componentDidMount() {
